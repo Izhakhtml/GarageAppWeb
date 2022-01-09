@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GarageDB" Class="GarageClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-K0H6TSU4;Initial Catalog=GarageDB;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GarageDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Clients" Member="Clients">
+    <Type Name="Client">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CarId_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Car_Client" Member="Car" ThisKey="CarId_ID" OtherKey="ID" Type="Car" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cars" Member="Cars">
+    <Type Name="Car">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameOwner" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CarNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IfPastTest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Car_Client" Member="Clients" ThisKey="ID" OtherKey="CarId_ID" Type="Client" />
+    </Type>
+  </Table>
+</Database>
